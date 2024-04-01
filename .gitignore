@@ -1,0 +1,2 @@
+# ingore all files in the folder named obj_dir
+obj_dir/*
