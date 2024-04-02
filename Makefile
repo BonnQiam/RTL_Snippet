@@ -2,15 +2,26 @@
 VERILATOR_FLAGS = -Wall
 
 # Name of the Verilog file (without extension)
-VERILOG_FILE = Comp_2_CA1
+##VERILOG_FILE = Comp_2_CA1
+##VERILOG_FILE = Comp_2_CA2
+#VERILOG_FILE = Compare_n_CA
+#VERILOG_FILE = Comp_2_RTL
+VERILOG_FILE = Comp_2_algo
 
 # Name of the testbench C++ file (without extension)
-##TESTBENCH_FILE = testbench
-TESTBENCH_FILE = tb
+##TESTBENCH_FILE = tb1_Comp_2_CA1
+##TESTBENCH_FILE = tb2_Comp_2_CA1
+##TESTBENCH_FILE = tb_Comp_2_CA2
+#TESTBENCH_FILE = tb_Compare_n_CA
+#TESTBENCH_FILE = tb_Comp_2_RTL
+TESTBENCH_FILE = tb_Comp_2_algo
 
 # Compile Verilog to C++
 verilate:
 	verilator $(VERILATOR_FLAGS) --cc $(VERILOG_FILE).v --exe $(TESTBENCH_FILE).cpp
+
+#   for VERILOG_FILE = Compare_n_CA
+#	verilator $(VERILATOR_FLAGS) --cc -Gword_size=64 $(VERILOG_FILE).v --exe $(TESTBENCH_FILE).cpp
 
 # Compile and run simulation
 sim: verilate
