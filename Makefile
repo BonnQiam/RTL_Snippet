@@ -9,7 +9,13 @@ VERILATOR_FLAGS = -Wall
 #VERILOG_FILE = Comp_2_algo
 
 #VERILOG_FILE = MagComp_b
-VERILOG_FILE = Eq_Comparator
+#VERILOG_FILE = Eq_Comparator
+
+#VERILOG_FILE = Shift_Left_Width_ShiftBit
+#VERILOG_FILE = Barrel_shifter_Width_ShiftBit
+#VERILOG_FILE = Barrel_shift_register
+#VERILOG_FILE = Shift_register_n
+VERILOG_FILE = Shift_reg4
 
 # Name of the testbench C++ file (without extension)
 ##TESTBENCH_FILE = tb1_Comp_2_CA1
@@ -20,17 +26,30 @@ VERILOG_FILE = Eq_Comparator
 #TESTBENCH_FILE = tb_Comp_2_algo
 
 #TESTBENCH_FILE = tb_MagComp_b
-TESTBENCH_FILE = tb_Eq_Comparator
+#TESTBENCH_FILE = tb_Eq_Comparator
+
+#TESTBENCH_FILE = tb_Shift_Left_Width_ShiftBit
+#TESTBENCH_FILE = tb_Barrel_shifter_Width_ShiftBit
+#TESTBENCH_FILE = tb_Barrel_shift_register
+#TESTBENCH_FILE = tb_Shift_register_n
+TESTBENCH_FILE = tb_Shift_reg4
 
 # Compile Verilog to C++
 verilate:
-#	verilator $(VERILATOR_FLAGS) --cc $(VERILOG_FILE).v --exe $(TESTBENCH_FILE).cpp
+#	verilator $(VERILATOR_FLAGS) --trace --cc $(VERILOG_FILE).v --exe $(TESTBENCH_FILE).cpp
+	verilator $(VERILATOR_FLAGS)  --cc $(VERILOG_FILE).v --exe $(TESTBENCH_FILE).cpp
 
 #   for VERILOG_FILE = Compare_n_CA
 #	verilator $(VERILATOR_FLAGS) --cc -Gword_size=64 $(VERILOG_FILE).v --exe $(TESTBENCH_FILE).cpp
 
 #   for VERILOG_FILE = MagComp_b / Eq_Comparator
-	verilator $(VERILATOR_FLAGS) --cc -Gk=8 $(VERILOG_FILE).v --exe $(TESTBENCH_FILE).cpp
+#	verilator $(VERILATOR_FLAGS) --cc -Gk=8 $(VERILOG_FILE).v --exe $(TESTBENCH_FILE).cpp
+
+#   for VERILOG_FILE = Barrel_shifter_Width_ShiftBit / Shift_Left_Width_ShiftBit
+#	verilator $(VERILATOR_FLAGS) --cc -Gwidth=8 -Gshifter_bit=3 $(VERILOG_FILE).v --exe $(TESTBENCH_FILE).cpp
+
+#for VERILOG_FILE = Barrel_shifter_Width_ShiftBit / Shift_Left_Width_ShiftBit
+#	verilator $(VERILATOR_FLAGS) --cc -Gn=4 $(VERILOG_FILE).v --exe $(TESTBENCH_FILE).cpp
 
 # Compile and run simulation
 sim: verilate
