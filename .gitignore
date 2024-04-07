@@ -1,4 +1,5 @@
 # ingore all files in the folder named obj_dir
+.vscode/*
 *.vcd
 Shift/obj_dir/*
 Shift/Shift_register/obj_dir/*

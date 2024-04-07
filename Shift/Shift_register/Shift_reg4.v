@@ -8,8 +8,7 @@ module Shift_reg4 (Data_out, Data_in, clock, reset);
 
   assign 	Data_out = Data_reg[0];
 
-  //always @  (negedge reset or posedge clock)
-  always @  (posedge clock)			
+  always @  (negedge reset or posedge clock)			
     begin 
       if (reset == 1'b0)  	
 	      Data_reg <= 4'b0;

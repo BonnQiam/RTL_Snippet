@@ -1,6 +1,7 @@
 #include <verilated.h>          // Defines common routines
 #include "VComp_2_CA1.h"       // From Verilating "VComp_2_CA1.h"
 
+#include <time.h>
 #include <iostream>
 
 int main(int argc, char** argv) {
@@ -8,6 +9,7 @@ int main(int argc, char** argv) {
     VComp_2_CA1* top = new VComp_2_CA1;   // Create instance of module
     
     // Simulate for 100 clock cycles
+    srand(time(0));
     for (int i = 0; i < 100; i++) {
         // Set inputs
         top->A1 = rand() & 1;
