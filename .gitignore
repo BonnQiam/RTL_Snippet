@@ -1,2 +1,5 @@
 # ingore all files in the folder named obj_dir
-obj_dir/*
+*.vcd
+Shift/obj_dir/*
+Shift/Shift_register/obj_dir/*
+Compare/obj_dir/*
