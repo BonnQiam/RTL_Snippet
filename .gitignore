@@ -1,7 +1,11 @@
 # ingore all files in the folder named obj_dir
 .vscode/*
 *.vcd
+
+Compare/obj_dir/*
+
 Shift/obj_dir/*
 Shift/Shift_register/obj_dir/*
 Shift/LFSR/obj_dir/*
-Compare/obj_dir/*
+
+Encode/obj_dir/*
