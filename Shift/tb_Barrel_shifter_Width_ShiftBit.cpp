@@ -20,7 +20,7 @@ int main(int argc, char **argv, char **env) {
             top->eval();
 
             std::cout << "Input: " << i << " Shift: " << j << std::endl;
-            int expected = ((i << j) | (i >> (8 - j))) & 0xFF;
+            int expected = ((i << j) | (i >> (8 - j))) & 0xFF;//circular shift operation
             std::cout << "Expected: " << expected << " Got: " << int(top->b) << std::endl;
 
             assert(top->b == expected);

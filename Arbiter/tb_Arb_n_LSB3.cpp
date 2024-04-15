@@ -1,6 +1,6 @@
 #include "verilated.h"
 
-#include "VArb_n_LSB.h"
+#include "VArb_n_LSB3.h"
 #include "Arb.h"
 
 #include <cassert>
@@ -10,7 +10,7 @@
 
 int main(int argc, char **argv, char **env) {
     Verilated::commandArgs(argc, argv);
-    VArb_n_LSB* top = new VArb_n_LSB;
+    VArb_n_LSB3* top = new VArb_n_LSB3;
 
     for (int i = 0; i < (1<<8); ++i) {
         top->r = i;

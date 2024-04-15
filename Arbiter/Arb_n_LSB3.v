@@ -2,7 +2,7 @@
 //  任意宽度仲裁器 —— LSB 优先级最高
 //---------------------
 //实现原理参考多位仲裁器的实现
-module Arb_n_LSB (
+module Arb_n_LSB3 (
     r,g
 );
     parameter n = 8;

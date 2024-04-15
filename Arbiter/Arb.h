@@ -24,8 +24,6 @@ public:
     }
 };
 
-#include <bitset>
-
 template<size_t n>
 class Arb_n_LSB {
 public:
@@ -64,4 +62,77 @@ public:
     unsigned int get_g() {
         return g.to_ulong();
     }
+};
+
+#include <cmath>
+template<size_t n>
+class Arb_n_Input {
+public:
+    std::bitset<n> r;
+    std::bitset<n> g;
+    int shift_right_bit;
+
+    Arb_n_Input(std::bitset<n> r, int base) : r(r){
+        shift_right_bit = std::log2(base);
+
+        // circular shift right r by shift_right_bit bits
+        std::bitset<n> r_shifted = (r >> shift_right_bit) | (r << (n - shift_right_bit));
+
+        Arb_n_LSB arb(r_shifted);
+
+        g = arb.g;
+        // circular shift left g by shift_right_bit bits
+        g = (g << shift_right_bit) | (g >> (n - shift_right_bit));
+    }
+
+    unsigned int get_g() {
+        return g.to_ulong();
+    }
+};
+
+
+// Here is a C++ reference model for the round robin arbiter. This model uses a queue to simulate the round robin behavior. When a request is granted, it is removed from the front of the queue and added to the back, ensuring that all requests get serviced in a round robin manner.
+
+#include <queue>
+
+template<size_t n>
+class RoundRobinArbiter {
+public:
+    RoundRobinArbiter(){
+        for (size_t i = 0; i < n; ++i) {
+            queue.push(i);
+        }
+    }
+
+    void reset() {
+        while (!queue.empty()) {
+            queue.pop();
+        }
+        for (size_t i = 0; i < n; ++i) {
+            queue.push(i);
+        }
+    }
+
+    void update(std::bitset<n> req_input) {
+        gnt.reset();
+        req = req_input;
+
+        if (!queue.empty()) {
+            int index = queue.front();
+            if (req[index]) {
+                gnt.set(index);
+                queue.pop();
+                queue.push(index);
+            }
+        }
+    }
+
+    unsigned int get_gnt() {
+        return gnt.to_ulong();
+    }
+
+private:
+    std::bitset<n> req;
+    std::bitset<n> gnt;
+    std::queue<int> queue;
 };
