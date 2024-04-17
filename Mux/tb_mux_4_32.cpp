@@ -1,11 +1,17 @@
-#include "Vmux_4_32_case.h"
 #include "verilated.h"
+
+//#include "Vmux_4_32_case.h"
+//#include "Vmux_4_32_if.h"
+#include "Vmux_4_32_CA.h"
+
 #include <cassert>
 #include <iostream>
 
 int main(int argc, char **argv, char **env) {
     Verilated::commandArgs(argc, argv);
-    Vmux_4_32_case* top = new Vmux_4_32_case;
+    //Vmux_4_32_case* top = new Vmux_4_32_case;
+    //Vmux_4_32_if* top = new Vmux_4_32_if;
+    Vmux_4_32_CA* top = new Vmux_4_32_CA;
 
     top->data_0 = 0;
     top->data_1 = 1;
