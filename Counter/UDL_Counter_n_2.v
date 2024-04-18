@@ -20,7 +20,7 @@ module UDL_Counter_n_2(clk, rst, up, down, load, in, out);
             default : next = out ;
         endcase
         */
-        casez( {rst, up,down,load})
+        casez({rst,up,down,load})
             4'b1??? : next = {n{1'b0}};
             4'b01?? : next = outpm1;
             4'b001? : next = outpm1;

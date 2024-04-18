@@ -12,12 +12,12 @@ module Mux4 (
     reg [k-1:0] b;
 
     always @(*) begin
-        case (s)
-            4'b0001 : b=a0;
-            4'b0010 : b=a1;
-            4'b0100 : b=a2; 
+        casez (s)
+            4'b???1 : b=a0;
+            4'b??10 : b=a1;
+            4'b?100 : b=a2; 
             4'b1000 : b=a3;
-            default: b={k{1'bx}};
+            default: b={k{1'b0}};
         endcase
     end
 endmodule

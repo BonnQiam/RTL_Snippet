@@ -1,4 +1,4 @@
-module IncDecBy3(clk, rst, inc, dec,out) ;
+module Inc_Dec_By_3(clk, rst, inc, dec,out) ;
     parameter n=8 ;
     input clk, rst,inc, dec ;
     output [n-1:0] out ;
@@ -24,7 +24,7 @@ module IncDecBy3(clk, rst, inc, dec,out) ;
             3'b010: next = outpm3 ;//加计数
             3'b001: next = outpm3 ;//减计数
             3'b000: next = out ;//保持
-            default: next = {n{1'b?}};
+            default: next = {n{1'b0}};
         endcase
     end
 endmodule

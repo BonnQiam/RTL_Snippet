@@ -10,14 +10,14 @@ module UDL_Counter_n_3(clk,rst,up,down,load,in,out) ;
     assign outpm1 = out+{{n-1{down}},1'b1};//信号功能单元
     
     Mux4 #(n) mux (out, 
-                  in,
-				  outpm1,
-				  {n{1'b0}},//以上均为输入
+              in,
+				      outpm1,
+				      {n{1'b0}},//以上均为输入
 		          {
 		            (~rst & ~up & ~down & ~load),
 		            (~rst & load),
 		            (~rst & (up | down)),
-                    rst 
+                rst 
 		          },//译码单元
-	              next) ; // Mux 输出
+	            next) ; // Mux 输出
 endmodule

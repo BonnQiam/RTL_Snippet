@@ -24,7 +24,14 @@ int main(int argc, char **argv, char **env) {
         // Random inputs
         top->rst = rand() % 2;
         top->up = rand() % 2;
-        top->down = rand() % 2;
+        //top->down = rand() % 2;
+        
+        // for VUDL_Counter_n_3
+        if(int(top->up) == 0)
+            top->down = 1;
+        else
+            top->down = 0;
+
         top->load = rand() % 2;
         top->in   = rand() % 16;
 
@@ -42,30 +49,35 @@ int main(int argc, char **argv, char **env) {
 
         if(int(top->rst) == 1){
             std::cout << "Test case: Reset" << std::endl;
+            std::cout << "Expected: " << binary_format(udl->get_out(), 4) << std::endl;
             std::cout << "=============================" << std::endl;
             assert(top->out == 0);
         }
         else if(int(top->up) == 1){
             std::cout << "Test case: Up" << std::endl;
             std::cout << "State: " << binary_format(int(top->out), 4) << std::endl;
+            std::cout << "Expected: " << binary_format(udl->get_out(), 4) << std::endl;
             std::cout << "=============================" << std::endl;
             assert(top->out == udl->get_out());
         }
         else if(int(top->down) == 1){
             std::cout << "Test case: Down" << std::endl;
             std::cout << "State: " << binary_format(int(top->out), 4) << std::endl;
+            std::cout << "Expected: " << binary_format(udl->get_out(), 4) << std::endl;
             std::cout << "=============================" << std::endl;
             assert(top->out == udl->get_out());
         }
         else if(int(top->load) == 1){
             std::cout << "Test case: Load" << std::endl;
             std::cout << "State: " << binary_format(int(top->out), 4) << std::endl;
+            std::cout << "Expected: " << binary_format(udl->get_out(), 4) << std::endl;
             std::cout << "=============================" << std::endl;
             assert(top->out == udl->get_out());
         }
         else{
             std::cout << "Test case: No change" << std::endl;
             std::cout << "State: " << binary_format(int(top->out), 4) << std::endl;
+            std::cout << "Expected: " << binary_format(udl->get_out(), 4) << std::endl;
             std::cout << "=============================" << std::endl;
             assert(top->out == udl->get_out());
         }
