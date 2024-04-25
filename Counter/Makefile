@@ -7,7 +7,8 @@ VERILATOR_FLAGS = -Wall
 #VERILOG_FILE = UDL_Counter_n_2
 #VERILOG_FILE = UDL_Counter_n_3
 #VERILOG_FILE = Inc_Dec_By_3
-VERILOG_FILE = Up_down_Counter_3
+#VERILOG_FILE = Up_down_Counter_3
+VERILOG_FILE = Ring_Counter_8
 
 # Name of the testbench C++ file (without extension)
 
@@ -15,7 +16,8 @@ VERILOG_FILE = Up_down_Counter_3
 #TESTBENCH_FILE = tb_Counter
 #TESTBENCH_FILE = tb_UDL_Counter_n
 #TESTBENCH_FILE = tb_Inc_Dec_By_3
-TESTBENCH_FILE = tb_Up_down_Counter_3
+#TESTBENCH_FILE = tb_Up_down_Counter_3
+TESTBENCH_FILE = tb_Ring_Counter_8
 
 # Compile Verilog to C++
 verilate:
