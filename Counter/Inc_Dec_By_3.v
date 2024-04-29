@@ -6,7 +6,8 @@ module Inc_Dec_By_3(clk, rst, inc, dec,out) ;
     
     DFF #(n) sr(clk,next, out) ;
     
-    wire [n-1:0] outpm3 = out +(dec ? (~2): 3 );
+    wire [n-1:0] outpm3 = out +(dec ? (~2): 3 ); // when dec=1, out=out-3; when inc=1, out=out+3
+                                                 // ~2 means -3, 3 means +3
     
     always @(*) begin
         /*

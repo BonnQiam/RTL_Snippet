@@ -8,7 +8,7 @@ module UDL_Counter_n_2(clk, rst, up, down, load, in, out);
     
     DFF#(n) count (clk, next, out) ;
     
-    assign outpm1 = out + {{n-1{~up}},1'b1};
+    assign outpm1 = out + {{n-1{~up}},1'b1};// out + 1'b1 if up = 1, out - 1'b1 if up = 0
     
     always@(* ) begin
         /*

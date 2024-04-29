@@ -7,7 +7,7 @@ module UDL_Counter_n_3(clk,rst,up,down,load,in,out) ;
     
     DFF #(n) count (clk,next, out) ;//寄存器输出
     
-    assign outpm1 = out+{{n-1{down}},1'b1};//信号功能单元
+    assign outpm1 = out+{{n-1{down}},1'b1};// out-1 when down=1, out+1 when up=1
     
     Mux4 #(n) mux (out, 
               in,
